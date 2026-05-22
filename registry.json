@@ -1,0 +1,7 @@
+{
+  "go-rest": {
+    "name": "Go REST API",
+    "path": "go/rest",
+    "description": "Simple REST API in Go"
+  }
+}  

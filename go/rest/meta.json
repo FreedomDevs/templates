@@ -1,0 +1,9 @@
+{
+  "name": "Go REST API",
+  "variables": [
+    {
+      "name": "PROJECT_NAME",
+      "default": "my-service"
+    }
+  ]
+}

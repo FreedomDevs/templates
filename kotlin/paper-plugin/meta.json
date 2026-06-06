@@ -1,0 +1,9 @@
+{
+  "name": "Kotlin Paper plugin",
+  "variables": [
+    {
+      "name": "PROJECT_NAME",
+      "default": "EPlugin"
+    }
+  ]
+}

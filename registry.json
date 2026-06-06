@@ -3,5 +3,10 @@
     "name": "Go REST API",
     "path": "go/rest",
     "description": "Simple REST API in Go"
+  },
+  "kotlin-paper-plugin": {
+    "name": "Kotlin Paper plugin",
+    "path": "kotlin/paper-plugin",
+    "description": "Simple minecraft plugin"
   }
 }  

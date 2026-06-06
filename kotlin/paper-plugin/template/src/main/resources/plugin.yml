@@ -1,0 +1,13 @@
+name: {{PROJECT_NAME}}
+prefix: {{PROJECT_NAME}}
+version: ${version}
+main: dev.elysium.{{PROJECT_NAME}}.Main
+description: Плагин какой-то
+website: 'https://github.com/FreedomDevs/{{PROJECT_NAME}}'
+api-version: '1.21.6'
+authors:
+  - Никто
+
+libraries:
+  - org.jetbrains.kotlin:kotlin-stdlib:2.2.21
+

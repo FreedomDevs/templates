@@ -2,6 +2,8 @@ plugins {
     java
     `maven-publish`
     kotlin("jvm") version "2.4.0"
+    kotlin("kapt") version "2.4.0"
+    id("com.gradleup.shadow") version "9.4.2"
 }
 
 group = "dev.elysium.{{PROJECT_NAME_LOWERCASE}}"
@@ -17,9 +19,9 @@ repositories {
 }
 
 dependencies {
-    compileOnly(kotlin("stdlib"))
+    implementation(kotlin("stdlib"))
     compileOnly("com.velocitypowered:velocity-api:3.5.0-SNAPSHOT")
-    annotationProcessor("com.velocitypowered:velocity-api:3.5.0-SNAPSHOT")
+    kapt("com.velocitypowered:velocity-api:3.5.0-SNAPSHOT")
 }
 
 val targetJavaVersion = 21
@@ -31,6 +33,15 @@ java {
 }
 
 tasks {
+    shadowJar {
+        archiveClassifier.set("") // Убирает суффикс "-all" из названия файла
+        
+        relocate("kotlin", "dev.elysium.{{PROJECT_NAME_LOWERCASE}}.internal.kotlin")
+        relocate("kotlinx", "dev.elysium.{{PROJECT_NAME_LOWERCASE}}.internal.kotlinx")
+    }
+    build {
+        dependsOn(shadowJar)
+    }
     withType<JavaCompile> {
         options.compilerArgs.add("-Xlint:deprecation")
     }

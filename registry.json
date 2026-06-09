@@ -8,5 +8,10 @@
     "name": "Kotlin Paper plugin",
     "path": "kotlin/paper-plugin",
     "description": "Simple minecraft plugin"
+  },
+  "kotlin-velocity-plugin": {
+    "name": "Kotlin Velocity plugin",
+    "path": "kotlin/velocity-plugin",
+    "description": "Velocity plugin"
   }
 }  

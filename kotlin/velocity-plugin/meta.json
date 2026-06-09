@@ -1,0 +1,9 @@
+{
+  "name": "Kotlin Velocity plugin",
+  "variables": [
+    {
+      "name": "PROJECT_NAME",
+      "default": "EPlugin"
+    }
+  ]
+}

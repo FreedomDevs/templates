@@ -41,11 +41,19 @@ tasks {
         relocate("kotlin", "dev.elysium.{{PROJECT_NAME_LOWERCASE}}.internal.kotlin")
         relocate("kotlinx", "dev.elysium.{{PROJECT_NAME_LOWERCASE}}.internal.kotlinx")
     }
+
     build {
         dependsOn(shadowJar)
     }
+
     withType<JavaCompile> {
         options.compilerArgs.add("-Xlint:deprecation")
+    }
+
+    val sourcesJar by registering(Jar::class) {
+        archiveBaseName.set("${rootProject.name}")
+        archiveClassifier.set("sources")
+        from(sourceSets.main.get().allSource)
     }
 }
 
@@ -53,9 +61,17 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
+
             groupId = project.group.toString()
-            artifactId = "{{PROJECT_NAME}}"
+            artifactId = "${rootProject.name}"
             version = project.version.toString()
+
+            artifact(tasks.named("sourcesJar"))
+        }
+    }
+    repositories {
+        maven {
+            url = rootProject.layout.buildDirectory.dir("repo").get().asFile.toURI()
         }
     }
 }

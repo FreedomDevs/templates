@@ -40,8 +40,6 @@ tasks {
         
         relocate("kotlin", "dev.elysium.{{PROJECT_NAME_LOWERCASE}}.internal.kotlin")
         relocate("kotlinx", "dev.elysium.{{PROJECT_NAME_LOWERCASE}}.internal.kotlinx")
-        relocate("org.intellij.lang.annotations", "dev.elysium.{{PROJECT_NAME_LOWERCASE}}.internal.org.intellij.lang.annotations")
-        relocate("org.jetbrains.annotations", "dev.elysium.{{PROJECT_NAME_LOWERCASE}}.internal.org.jetbrains.annotations")
     }
     build {
         dependsOn(shadowJar)

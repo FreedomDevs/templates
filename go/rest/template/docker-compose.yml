@@ -1,0 +1,25 @@
+services:
+  app:
+    build: .
+
+    env_file:
+      - .env
+
+    ports:
+      - "8080:8080"
+
+    networks:
+      net:
+        ipv6_address: fd98:2dd6:8f48:1d99:fa01:1235::2
+
+networks:
+  net:
+    enable_ipv6: true
+    enable_ipv4: false
+
+    driver_opts:
+      com.docker.network.driver.mtu: "65535"
+
+    ipam:
+      config:
+        - subnet: fd98:2dd6:8f48:1d99:fa01:1235::/96

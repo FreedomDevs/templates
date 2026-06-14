@@ -2,7 +2,7 @@ plugins {
     java
     `maven-publish`
     kotlin("jvm") version "2.4.0"
-    id("xyz.jpenilla.run-paper") version "2.3.1"
+    id("xyz.jpenilla.run-paper") version "3.0.2"
 }
 
 group = "dev.elysium.{{PROJECT_NAME_LOWERCASE}}"
@@ -33,6 +33,23 @@ java {
 tasks {
     runServer {
         minecraftVersion("1.21.6")
+
+        val pluginsDirFile = layout.projectDirectory.dir("run/plugins").asFile
+        doFirst {
+            if (!pluginsDirFile.exists()) {
+                pluginsDirFile.mkdirs()
+            }
+            
+            val viaVersionJar = pluginsDirFile.resolve("ViaVersion-5.6.0.jar")
+            if (!viaVersionJar.exists()) {
+                println("Downloading ViaVersion...")
+                URI("https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/5.6.0/PAPER/ViaVersion-5.6.0.jar")
+                    .toURL().openStream().use { input ->
+                        viaVersionJar.outputStream().use { output -> input.copyTo(output) }
+                    }
+                println("ViaVersion downloaded successfully to run/plugins")
+            }
+        }
     }
 
     processResources {
